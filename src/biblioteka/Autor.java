@@ -18,6 +18,10 @@ public class Autor {
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
 	}
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
 
 }

@@ -8,6 +8,52 @@ public class Knjiga {
 	private long ISBN;
 	private int izdanje;
 	private LinkedList<Autor>autori=new LinkedList<Autor>();
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (ISBN ^ (ISBN >>> 32));
+		result = prime * result + ((autori == null) ? 0 : autori.hashCode());
+		result = prime * result + izdanje;
+		result = prime * result + ((izdavac == null) ? 0 : izdavac.hashCode());
+		result = prime * result + ((naslov == null) ? 0 : naslov.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Knjiga other = (Knjiga) obj;
+		if (ISBN != other.ISBN)
+			return false;
+		if (autori == null) {
+			if (other.autori != null)
+				return false;
+		} else if (!autori.equals(other.autori))
+			return false;
+		if (izdanje != other.izdanje)
+			return false;
+		if (izdavac == null) {
+			if (other.izdavac != null)
+				return false;
+		} else if (!izdavac.equals(other.izdavac))
+			return false;
+		if (naslov == null) {
+			if (other.naslov != null)
+				return false;
+		} else if (!naslov.equals(other.naslov))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Knjiga [naslov=" + naslov + ", izdavac=" + izdavac + ", ISBN="
+				+ ISBN + ", izdanje=" + izdanje + ", autori=" + autori + "]";
+	}
 	public LinkedList<Autor> getAutori() {
 		return autori;
 	}
